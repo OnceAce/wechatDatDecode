@@ -84,15 +84,7 @@ func handlerOne(info os.FileInfo, dir string, outputDir string, ) {
 		return
 	}
 	defer sourceFile.Close()
-
-	fileInfo, err := sourceFile.Stat()
-	if err != nil {
-		fmt.Println(err)
-		return
-	modTime := fileInfo.ModTime()
-
 	
-
 	var preTenBts = make([]byte, 10)
 	_, _ = sourceFile.Read(preTenBts)
 	decodeByte, ext, er := findDecodeByte(preTenBts)
@@ -124,6 +116,22 @@ func handlerOne(info os.FileInfo, dir string, outputDir string, ) {
 	}
 	_ = writer.Flush()
 	_ = distFile.Close()
+
+	fileInfo, err := sourceFile.Stat()
+	if err != nil {
+		fmt.Println(err)
+		return
+	}
+	modTime := fileInfo.ModTime()
+
+	fileInfo, err = os.Stat(distFile)
+	if err != nil {
+		fmt.Println(err)
+		return
+	}
+	stat := fileInfo.Sys().(*syscall.Stat_t)
+	stat.CreationTime = modTime
+	stat.LastWriteTime = modTime
 
 	fmt.Println("output file：", distFile.Name())
 }
