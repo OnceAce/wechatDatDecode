@@ -83,6 +83,7 @@ func handlerOne(info os.FileInfo, dir string, outputDir string, ) {
 		fmt.Println(err.Error())
 		return
 	}
+	defer sourceFile.Close()
 
 	fileInfo, err := sourceFile.Stat()
 	if err != nil {
