@@ -84,6 +84,14 @@ func handlerOne(info os.FileInfo, dir string, outputDir string, ) {
 		return
 	}
 
+	fileInfo, err := sourceFile.Stat()
+	if err != nil {
+		fmt.Println(err)
+		return
+	modTime := fileInfo.ModTime()
+
+	
+
 	var preTenBts = make([]byte, 10)
 	_, _ = sourceFile.Read(preTenBts)
 	decodeByte, ext, er := findDecodeByte(preTenBts)
