@@ -11,7 +11,6 @@ import (
 	"path/filepath"
 	"sync"
 	"time"
-	"syscall"
 )
 
 var imagePrefixBtsMap = make(map[string][]byte)
@@ -126,14 +125,11 @@ func handlerOne(info os.FileInfo, dir string, outputDir string, ) {
 	}
 	modTime := fileInfo.ModTime()
 
-	fileStat, err := os.Stat(outputFile)
+	err = os.Chtimes(outputFile, modTime, modTime)
 	if err != nil {
 		fmt.Println(err)
 		return
 	}
-	stat := fileStat.Sys().(*syscall.Stat_t)
-	stat.CreationTime = modTime
-	stat.LastWriteTime = modTime
 
 	fmt.Println("output file：", distFile.Name())
 }
