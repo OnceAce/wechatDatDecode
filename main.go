@@ -11,6 +11,7 @@ import (
 	"path/filepath"
 	"sync"
 	"time"
+	"strings"
 )
 
 var imagePrefixBtsMap = make(map[string][]byte)
@@ -93,7 +94,8 @@ func handlerOne(info os.FileInfo, dir string, outputDir string, ) {
 		return
 	}
 
-	outputFile:=outputDir + "/" + info.Name() + ext
+	infoName:=strings.Split(info.Name(), ".")[0]
+	outputFile:=outputDir + "/" + infoName + ext
 	distFile, er := os.Create(outputFile)
 	if er != nil {
 		fmt.Println(er.Error())
