@@ -1,1 +1,1 @@
-go build -o wechatDatDecode.exe main.go
+go build -o WechatDatToPicture.exe main.go
