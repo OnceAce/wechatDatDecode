@@ -127,8 +127,8 @@ func handlerOne(info os.FileInfo, dir string, outputDir string, ) {
 	}
 	modTime := fileInfo.ModTime()
 
-	err = os.Chtimes(outputFile, modTime, modTime)
-	if err != nil {
+	
+	if err := os.Chtimes(outputFile, modTime, modTime); err != nil {
 		fmt.Println(err)
 		return
 	}
