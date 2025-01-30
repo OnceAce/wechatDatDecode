@@ -1,6 +1,6 @@
 # wechatDatDecode
 ### 生成文件
-```shell go build -o WechatDatToPicture.exe main.go```
+```go build -o WechatDatToPicture.exe main.go```
 
 
 
