@@ -2,6 +2,10 @@
 Windows系统下载exe文件可直接使用。
 
 ### 生成文件
+```javascript
+123
+
+
 ```go build -o WechatDatToPicture.exe main.go```
 
 
