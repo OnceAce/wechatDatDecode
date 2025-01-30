@@ -1,4 +1,6 @@
 # wechatDatDecode
+Windows系统下载exe文件可直接使用。
+
 ### 生成文件
 ```go build -o WechatDatToPicture.exe main.go```
 
@@ -10,4 +12,4 @@
 * -in 要处理的目录 默认当前目录
 * -out 文件输出目录 默认当前目录下的Decode目录
 
-Windows系统下载exe文件可直接使用。
+
